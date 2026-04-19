@@ -62,7 +62,7 @@ Con el entorno gráfico ligero ya configurado, el siguiente paso es la instalaci
 
 ### Paso 2.1: Configuración de la contraseña
 Una vez instalados los servicios, se procede a la creación de las credenciales de acceso para el servidor gráfico mediante el comando `vncpasswd`.
-![Configuracion Inicial](02-Configuracion-Inicial-Contraseña.png)
+![Configuracion Inicial](02-configuracion-inicial-contraseña.png)
 
 ### Paso 2.2: Detalles técnicos del despliegue
 - **Ejecución del comando:** Se utiliza `vncpasswd` para generar el archivo de claves cifradas en el directorio del usuario.
