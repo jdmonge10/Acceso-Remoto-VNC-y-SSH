@@ -26,7 +26,7 @@ Para asegurar la replicabilidad de este laboratorio, se detallan los recursos de
 ### 3.1: Nodo Servidor (Ubuntu 22.04)
 * **Sistema Operativo:** Ubuntu 22.04 LTS (Jammy Jellyfish).
 * **Entorno Gráfico:** XFCE4 (Optimizado para VNC).
-* **Recursos VM:** 4GB RAM | 2 vCPUs | 25GB VDI.
+* **Recursos VM:** 4GB RAM | 2 vCPUs | 50GB VDI.
 * **Red:** Adaptador Puente (Bridge).
 
 ![Especificaciones Ubuntu](./00-especificaciones/01-especificaciones-ubuntu.png)
