@@ -79,7 +79,7 @@ Para que el servidor VNC arranque el entorno ligero **XFCE4** en lugar de una te
 ### Paso 3.1: Inicio del proceso de configuración
 Se prepara el entorno para la modificación de los archivos de arranque del servidor.
 `nano ~/.vnc/xstartup`
-![Inicio Configuración](01-configuracion-inicio-escritorio.png)
+![Inicio Configuración](./configuracion-arranque-escritorio/01-configuracion-inicio-escritorio.png)
 
 ### Paso 3.2: Finalización de la sesión previa
 Antes de editar el fichero, se debe matar la instancia activa para evitar conflictos con archivos de bloqueo (.lock) y asegurar una edición limpia:
