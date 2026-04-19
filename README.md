@@ -105,11 +105,28 @@ Se inicia nuevamente el servidor VNC. El sistema confirma que el servicio está 
 `vncserver :1`
 ![Arranque Exitoso](./03-configuracion-arranque-escritorio/06-inicio-servidor-vnc-exitoso.png)
 
+---
 
+# 📂 Fase 04: Creación de túnel SSH
 
+Para garantizar que la conexión sea segura y cifrada, se utiliza un túnel SSH. Esto permite encapsular el tráfico del escritorio remoto dentro de una conexión protegida, mapeando un puerto local de nuestra máquina Windows con el puerto del servidor.
 
+### Paso 4.1: Apertura de la terminal en el cliente
+El primer paso es abrir el **Símbolo del sistema (CMD)** o PowerShell en Windows para ejecutar los comandos de red necesarios.
+![Búsqueda Terminal](./04-creacion-tunel-ssh/01-busqueda-terminal-windows.png)
 
+### Paso 4.2: Ejecución del túnel SSH y validación
+Se ejecuta el comando para crear el túnel cifrado. En este caso, mapeamos el puerto local `59000` del cliente hacia el puerto `5901` del servidor. 
 
+`ssh -L 59000:localhost:5901 -C -N -l admin1 192.168.1.XXX`
+
+![Ejecución Túnel SSH](./04-creacion-tunel-ssh/02-ejecucion-tunel-ssh-contrasena.png)
+
+**Detalles técnicos del comando:**
+- `-L 59000:localhost:5901`: Redirige el tráfico del puerto local 59000 al 5901 remoto.
+- `-C`: Activa la compresión de datos para mejorar la fluidez de la imagen.
+- `-N`: Indica que solo se requiere el túnel (no se abrirá una consola remota interactiva).
+- `-l admin1`: Especifica el usuario de acceso en el servidor.
 
 ---
 
