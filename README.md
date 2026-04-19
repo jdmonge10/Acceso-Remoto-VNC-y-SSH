@@ -10,6 +10,7 @@ Este manual documenta el proceso técnico integral para crear un entorno de admi
 * [📂 Fase 01: Preparación y Actualización del Servidor](#-fase-01-preparación-del-sistema-e-instalación-de-entorno-gráfico)
 * [📂 Fase 02: Instalación de TightVNC Server](#-fase-02-instalación-de-tightvnc-server)
 * [📂 Fase 03: Configuración Inicial del Servidor VNC)](#-fase-03-configuración-inicial-del-servidor-vnc)
+* [📂 Fase 04: Personalización del Arranque (Script xstartup)](#-fase-04-personalización-del-arranque-script-xstartup)
 * [📂 Fase 05: Gestión de Seguridad y Firewall (UFW)](#-fase-06-gestión-de-seguridad-y-firewall-ufw)
 * [📂 Fase 06: Instalación del Cliente en Windows 10](#-fase-07-instalación-del-cliente-en-windows-10)
 * [📂 Fase 08: Verificación y Pruebas de Conectividad](#-fase-08-verificación-y-pruebas-de-conectividad)
@@ -87,6 +88,39 @@ Al ejecutar el comando `vncserver` por primera vez, el sistema lanza un asistent
 `vncserver`
 
 ![Configuración Password](./03-configuracion-inicial/02-password-vnc.png)
+
+---
+
+## 📂 Fase 04: Personalización del Arranque (Script xstartup)
+En esta etapa configuramos las instrucciones de inicio del servidor para cargar el escritorio ligero XFCE4.
+
+### 4.1. Edición y Limpieza del Script
+Accedemos al archivo de configuración desde la terminal:
+`nano ~/.vnc/xstartup`
+
+![Lanzamiento Nano](./04-personalizacion-arranque/02-lanzamiento-nano.png)
+
+Al entrar, visualizamos el contenido genérico original, el cual procedemos a eliminar íntegramente:
+
+![Contenido Original](./04-personalizacion-arranque/03-contenido-original-script.png)
+
+### 4.2. Inyección de Configuración XFCE4
+Insertamos los comandos necesarios para la carga del entorno gráfico. El archivo debe quedar configurado de la siguiente manera:
+
+![Edición del Script](./04-personalizacion-arranque/01-edicion-script.png)
+
+Verificamos que no existan líneas residuales antes de guardar los cambios:
+
+![Script Finalizado](./04-personalizacion-arranque/04-script-finalizado.png)
+
+### 4.3. Asignación de Permisos de Ejecución
+Finalmente, otorgamos privilegios de ejecución al script mediante la ruta absoluta para asegurar que el motor de VNC pueda procesarlo correctamente:
+
+`chmod +x /home/admin1/.vnc/xstartup`
+
+![Permisos Script](./04-personalizacion-arranque/05-permisos-script.png)
+
+---
 
 ## 🏆 Conclusión Final
 El proyecto ha demostrado la viabilidad de implementar un sistema de control remoto gráfico multiplataforma. Se ha logrado integrar con éxito un servidor Linux accesible desde clientes Windows, optimizando recursos mediante el uso de entornos ligeros y configuraciones de red locales.
