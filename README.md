@@ -9,7 +9,7 @@ Este manual documenta el proceso técnico integral para crear un entorno de admi
 * [🛠️ Especificaciones Técnicas](#️-especificaciones-técnicas)
 * [📂 Fase 01: Preparación y Actualización del Servidor](#-fase-01-preparación-del-sistema-e-instalación-de-entorno-gráfico)
 * [📂 Fase 02: Instalación de TightVNC Server](#-fase-02-instalación-de-tightvnc-server)
-* [📂 Fase 04: Configuración del Script de Inicio (xstartup)](#-fase-05-configuración-del-script-de-inicio-xstartup)
+* [📂 Fase 03: Configuración Inicial del Servidor VNC)](#-fase-03-configuración-inicial-del-servidor-vnc)
 * [📂 Fase 05: Gestión de Seguridad y Firewall (UFW)](#-fase-06-gestión-de-seguridad-y-firewall-ufw)
 * [📂 Fase 06: Instalación del Cliente en Windows 10](#-fase-07-instalación-del-cliente-en-windows-10)
 * [📂 Fase 08: Verificación y Pruebas de Conectividad](#-fase-08-verificación-y-pruebas-de-conectividad)
