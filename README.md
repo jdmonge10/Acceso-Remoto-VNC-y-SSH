@@ -8,8 +8,7 @@ Este manual documenta el proceso técnico integral para crear un entorno de admi
 
 * [🛠️ Especificaciones Técnicas](#️-especificaciones-técnicas)
 * [📂 Fase 01: Preparación y Actualización del Servidor](#-fase-01-preparación-del-sistema-e-instalación-de-entorno-gráfico)
-* [📂 Fase 02: Instalación del Entorno Gráfico Ligero (XFCE4)](#-fase-03-instalación-del-entorno-gráfico-ligero-xfce4)
-* [📂 Fase 03: Instalación de TightVNC Server](#-fase-04-instalación-de-tightvnc-server)
+* [📂 Fase 02: Instalación de TightVNC Server](#-fase-02-instalación-de-tightvnc-server)
 * [📂 Fase 04: Configuración del Script de Inicio (xstartup)](#-fase-05-configuración-del-script-de-inicio-xstartup)
 * [📂 Fase 05: Gestión de Seguridad y Firewall (UFW)](#-fase-06-gestión-de-seguridad-y-firewall-ufw)
 * [📂 Fase 06: Instalación del Cliente en Windows 10](#-fase-07-instalación-del-cliente-en-windows-10)
@@ -57,6 +56,18 @@ Para maximizar el rendimiento del acceso remoto, se instala el escritorio ligero
 
 ---
 
+## 📂 Fase 02: Instalación de TightVNC Server
+Con el entorno gráfico ligero ya configurado, el siguiente paso es la instalación del software de servidor. **TightVNC** es el estándar elegido para este despliegue debido a su alta eficiencia en el manejo de recursos y compatibilidad con múltiples clientes.
+
+### 2.1. Despliegue del Binario
+Se utiliza el gestor de paquetes de Ubuntu para descargar e integrar los binarios necesarios del servidor VNC. Este paquete habilita al servidor para escuchar peticiones remotas en el puerto 5901 (por defecto):
+
+`sudo apt install tightvncserver -y`
+
+![Instalación VNC](./02-instalacion-tightvncserver/01-instalacion-vnc.png)
+
+---
+
 ## 🏆 Conclusión Final
 El proyecto ha demostrado la viabilidad de implementar un sistema de control remoto gráfico multiplataforma. Se ha logrado integrar con éxito un servidor Linux accesible desde clientes Windows, optimizando recursos mediante el uso de entornos ligeros y configuraciones de red locales.
 
@@ -71,11 +82,4 @@ El proyecto ha demostrado la viabilidad de implementar un sistema de control rem
 
 ---
 
-## 📂 Fase 01: Preparación y Actualización del Servidor
-El proceso comienza con la sincronización de los repositorios oficiales para asegurar la integridad y seguridad de los paquetes a instalar.
 
-### Paso 1.1: Actualización del Sistema
-Ejecutamos el comando de mantenimiento para poner al día el software base de la máquina Ubuntu:
-`sudo apt update && sudo apt upgrade -y`
-
-![Update Sistema](./01-preparacion/01-update-ubuntu.png)
