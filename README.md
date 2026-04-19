@@ -8,7 +8,7 @@ Este manual documenta el proceso técnico integral para crear un entorno de admi
 
 * [🛠️ Especificaciones Técnicas](#️-especificaciones-técnicas)
 * [📂 Fase 01: Preparación y Actualización del Servidor](#-fase-01-preparación-del-sistema-e-instalación-de-entorno-gráfico)
-* [📂 Fase 02: Instalación de TightVNC Server](#-fase-02-instalación-de-tightvnc-server)
+* [📂 Fase 02: Configuración Inicial Contraseña](#-fase-02-configuración-inicial-contraseña)
 * [📂 Fase 03: Configuración Inicial del Servidor VNC)](#-fase-03-configuración-inicial-del-servidor-vnc)
 * [📂 Fase 04: Configuración del Entorno Gráfico(xstartup)](#-fase-04-configuración-del-entorno-gráfico-xstartup)
 * [📂 Fase 05: Gestión de Seguridad y Firewall (UFW)](#-fase-06-gestión-de-seguridad-y-firewall-ufw)
@@ -50,14 +50,14 @@ Se garantiza que el sistema disponga de las últimas firmas de seguridad y versi
 ![Update Sistema](./01-preparacion-instalacion/01-update-sistema.png)
 
 ### 1.2. Instalación del Entorno XFCE4 y Servicios de Acceso Remoto
-Para maximizar el rendimiento del acceso remoto y garantizar la gestión del nodo, se instala el escritorio ligero **XFCE4**, el servidor TigerVNC y el servicio SSH. Esto evita la carga excesiva de GNOME y permite la administración remota segura: 
-`sudo apt install xfce4 xfce4-goodies tigervnc-standalone-server openssh-server -y`
+Una vez instalados los servicios, se procede a la creación de las credenciales de acceso para el servidor gráfico. Mediante el comando vncpasswd se establece una contraseña de control total y, opcionalmente, una de solo lectura (view-only), garantizando que solo los usuarios autorizados puedan gestionar el escritorio remoto:
+`vncpasswd`
 
 ![Instalación Escritorio](./01-preparacion-instalacion/02-instalacion-escritorio.png)
 
 ---
 
-## 📂 Fase 02: Instalación de TightVNC Server
+## 📂 Fase 02: Configuracion Inicial Contraseña.png
 Con el entorno gráfico ligero ya configurado, el siguiente paso es la instalación del software de servidor. **TightVNC** es el estándar elegido para este despliegue debido a su alta eficiencia en el manejo de recursos y compatibilidad con múltiples clientes.
 
 ### 2.1. Despliegue del Binario
