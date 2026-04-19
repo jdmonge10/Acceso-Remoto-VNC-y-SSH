@@ -7,7 +7,7 @@ Este manual documenta el proceso técnico integral para crear un entorno de admi
 # 📑 Índice de Contenidos
 
 * [🛠️ Especificaciones Técnicas](#️-especificaciones-técnicas)
-* [📂 Fase 01: Preparación y Actualización del Servidor](#-fase-02-preparación-y-actualización-del-servidor)
+* [📂 Fase 01: Preparación y Actualización del Servidor](#-fase-01-preparación-del-sistema-e-instalación-de-entorno-gráfico)
 * [📂 Fase 02: Instalación del Entorno Gráfico Ligero (XFCE4)](#-fase-03-instalación-del-entorno-gráfico-ligero-xfce4)
 * [📂 Fase 03: Instalación de TightVNC Server](#-fase-04-instalación-de-tightvnc-server)
 * [📂 Fase 04: Configuración del Script de Inicio (xstartup)](#-fase-05-configuración-del-script-de-inicio-xstartup)
