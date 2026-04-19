@@ -11,7 +11,7 @@ Este manual documenta el proceso técnico integral para crear un entorno de admi
 * [📂 Fase 02: Configuración Inicial Contraseña](#-fase-02-configuración-inicial-contraseña)
 * [📂 Fase 03: Configuración del Arranque del Escritorio)](#-fase-03-configuración-del-arranque-del-escritorio)
 * [📂 Fase 04: Creación de Túnel SSH](#-fase-04-creación-de-túnel-ssh)
-* [📂 Fase 05: Implementación de RealVNC Viewer en Windows](#-fase-05-implementación-de-realvnc-en-windows)
+* [📂 Fase 05: Implementación de RealVNC Viewer en Windows](#-fase-05-implementación-de-realvnc-viewer-en-windows)
 * [📂 Fase 06: Instalación del Cliente en Windows 10](#-fase-07-instalación-del-cliente-en-windows-10)
 * [📂 Fase 08: Verificación y Pruebas de Conectividad](#-fase-08-verificación-y-pruebas-de-conectividad)
 * [🏆 Conclusión Final](#-conclusión-final)
