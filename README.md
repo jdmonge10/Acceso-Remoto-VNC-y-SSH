@@ -11,7 +11,7 @@ Este manual documenta el proceso técnico integral para crear un entorno de admi
 * [📂 Fase 02: Configuración Inicial Contraseña](#-fase-02-configuración-inicial-contraseña)
 * [📂 Fase 03: Configuración del Arranque del Escritorio)](#-fase-03-configuración-del-arranque-del-escritorio)
 * [📂 Fase 04: Creación de Túnel SSH](#-fase-04-creación-de-túnel-ssh)
-* [📂 Fase 05: Gestión de Seguridad y Firewall (UFW)](#-fase-06-gestión-de-seguridad-y-firewall-ufw)
+* [📂 Fase 05: Implementación de RealVNC Viewer en Windows](#-fase-05-implementación-de-realvnc-en-windows)
 * [📂 Fase 06: Instalación del Cliente en Windows 10](#-fase-07-instalación-del-cliente-en-windows-10)
 * [📂 Fase 08: Verificación y Pruebas de Conectividad](#-fase-08-verificación-y-pruebas-de-conectividad)
 * [🏆 Conclusión Final](#-conclusión-final)
@@ -127,6 +127,39 @@ Se ejecuta el comando para crear el túnel cifrado. En este caso, mapeamos el pu
 - `-C`: Activa la compresión de datos para mejorar la fluidez de la imagen.
 - `-N`: Indica que solo se requiere el túnel (no se abrirá una consola remota interactiva).
 - `-l admin1`: Especifica el usuario de acceso en el servidor.
+
+---
+# 📂 Fase 05: Implementación de RealVNC Viewer en Windows
+
+Para poder visualizar el escritorio remoto del servidor, instalaremos y configuraremos el cliente oficial **RealVNC Viewer** en la máquina Windows 10. Este software permitirá la conexión gráfica a través del túnel seguro creado anteriormente.
+
+### Paso 5.1: Descarga del software
+Se accede al portal oficial de descargas para obtener el instalador ejecutable de VNC Viewer compatible con la arquitectura de Windows 10.
+![Descarga Software](./05-implementacion-cliente-vnc-windows/01-descarga-software-vnc.png)
+
+### Paso 5.2: Selección del idioma
+Al ejecutar el archivo `.exe`, el asistente solicita la selección del idioma para el proceso de instalación.
+![Selección Idioma](./05-implementacion-cliente-vnc-windows/02-instalacion-idioma.png)
+
+### Paso 5.3: Asistente de instalación
+Inicio de la ventana de bienvenida del instalador de RealVNC, que prepara los componentes necesarios para el sistema.
+![Asistente Bienvenida](./05-implementacion-cliente-vnc-windows/03-asistente-instalacion-bienvenida.png)
+
+### Paso 5.4: Aceptación de términos y licencia
+Lectura y validación del acuerdo de licencia de usuario final (EULA), requisito obligatorio para proceder con el despliegue.
+![Aceptación Licencia](./05-implementacion-cliente-vnc-windows/04-aceptacion-terminos-licencia.png)
+
+### Paso 5.5: Configuración de ruta y características
+Se define el directorio de destino en el disco local y se configuran los accesos directos del programa.
+![Configuración Ruta](./05-implementacion-cliente-vnc-windows/05-configuracion-caracteristicas-ruta.png)
+
+### Paso 5.6: Confirmación de inicio de instalación
+Resumen de la configuración seleccionada y comienzo de la copia de archivos binarios al sistema operativo.
+![Confirmación Inicio](./05-implementacion-cliente-vnc-windows/06-confirmacion-inicio-instalacion.png)
+
+### Paso 5.7: Instalación finalizada con éxito
+El proceso concluye correctamente. El cliente RealVNC Viewer ya está disponible para su ejecución en el menú de aplicaciones.
+![Instalación Finalizada](./05-implementacion-cliente-vnc-windows/07-instalacion-finalizada-exito.png)
 
 ---
 
