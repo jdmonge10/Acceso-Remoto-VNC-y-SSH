@@ -41,27 +41,20 @@ Para asegurar la replicabilidad de este laboratorio, se detallan los recursos de
 
 ---
 
-## 📂 Fase 01: Configuración de la Red (Adaptador Puente)
-Para permitir la comunicación bidireccional entre ambos nodos, se configura el adaptador de red en modo puente.
+## 📂 Fase 01: Preparación del Sistema e Instalación de Entorno Gráfico
+En esta etapa se garantiza que el servidor cuente con las últimas definiciones de seguridad y se procede a la instalación de una interfaz gráfica ligera para optimizar la transmisión de datos.
 
-### 1.1. Verificación de IP en Ubuntu
-Ejecutamos el comando para obtener la dirección lógica del servidor:
-`ip add`
-
-### 1.2. Prueba de conectividad (Ping)
-Desde el cliente Windows 10, validamos que existe respuesta del servidor.
-`ping [IP_UBUNTU]`
-
----
-
-## 📂 Fase 02: Preparación y Actualización del Servidor
-Garantizamos la integridad del sistema antes de la instalación de servicios de red.
-
-### 2.1. Actualización del Sistema
-Sincronizamos los repositorios oficiales de Canonical:
+### 1.1. Actualización de Repositorios
+Se garantiza que el sistema disponga de las últimas firmas de seguridad y versiones de software:
 `sudo apt update && sudo apt upgrade -y`
 
-![Update Ubuntu](./01-preparacion/01-update-sistema.png)
+![Update Sistema](./01-preparacion-instalacion/01-update-sistema.png)
+
+### 1.2. Instalación del Entorno XFCE4
+Para maximizar el rendimiento del acceso remoto, se instala el escritorio ligero **XFCE4** y sus complementos, evitando la carga excesiva que supone el entorno GNOME por defecto:
+`sudo apt install xfce4 xfce4-goodies -y`
+
+![Instalación Escritorio](./01-preparacion-instalacion/02-instalacion-escritorio.png)
 
 ---
 
