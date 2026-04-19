@@ -10,7 +10,7 @@ Este manual documenta el proceso técnico integral para crear un entorno de admi
 * [📂 Fase 01: Preparación y Actualización del Servidor](#-fase-01-preparación-del-sistema-e-instalación-de-entorno-gráfico)
 * [📂 Fase 02: Instalación de TightVNC Server](#-fase-02-instalación-de-tightvnc-server)
 * [📂 Fase 03: Configuración Inicial del Servidor VNC)](#-fase-03-configuración-inicial-del-servidor-vnc)
-* [📂 Fase 04: Personalización del Arranque (Script xstartup)](#-fase-04-personalización-del-arranque-script-xstartup)
+* [📂 Fase 04: Configuración del Entorno Gráfico(xstartup)](#-fase-04-configuración-del-entorno-gráfico-xstartup)
 * [📂 Fase 05: Gestión de Seguridad y Firewall (UFW)](#-fase-06-gestión-de-seguridad-y-firewall-ufw)
 * [📂 Fase 06: Instalación del Cliente en Windows 10](#-fase-07-instalación-del-cliente-en-windows-10)
 * [📂 Fase 08: Verificación y Pruebas de Conectividad](#-fase-08-verificación-y-pruebas-de-conectividad)
@@ -91,39 +91,32 @@ Al ejecutar el comando `vncserver` por primera vez, el sistema lanza un asistent
 
 ---
 
-## 📂 Fase 04: Personalización del Arranque (Script xstartup)
-En esta etapa realizamos la parada técnica del servidor para modificar sus instrucciones de inicio y forzar la carga del entorno gráfico **XFCE4**.
+## 📂 Fase 04: Configuración del Entorno Gráfico (xstartup)
+Una vez instalado el servidor VNC, es imperativo configurar el script de inicio para evitar el error de "pantalla gris" y asegurar que se cargue correctamente el entorno de escritorio XFCE4.
 
-### 4.1. Parada del Servicio
-Antes de editar cualquier archivo de configuración, es obligatorio detener la instancia activa del servidor. En nuestro caso, el sistema estaba ejecutando el monitor `:3`:
+### Paso 4.1: Detención de sesiones previas
+Antes de aplicar cambios técnicos, se cierran las sesiones activas del servidor para trabajar sobre una base limpia y evitar conflictos de procesos.
+![Detención Proceso](04-personalizacion-arranque-xstartup/01-detencion-proceso-vnc-previo.png)
 
-`vncserver -kill :3`
+### Paso 4.2: Edición del script de arranque
+Se accede al archivo de configuración oculto mediante el editor de texto `nano`. Este archivo es el "cerebro" que indica a VNC qué aplicaciones debe ejecutar al conectar.
+![Apertura Nano](04-personalizacion-arranque-xstartup/02-apertura-archivo-configuracion.png)
 
-![Parada del Servidor](./04-personalizacion-arranque/01-edicion-script.png) 
-*(Nota: Aquí usamos la captura donde se ve el proceso siendo eliminado)*
+### Paso 4.3: Contenido original del sistema
+Captura del código por defecto generado por TightVNC. Se identifica que la configuración estándar no es compatible con el entorno gráfico instalado, lo que provoca la visualización nula (pantalla gris).
+![Contenido Original](04-personalizacion-arranque-xstartup/03-contenido-original-script.png)
 
-### 4.2. Edición y Limpieza del Script
-Con el servidor detenido, accedemos al archivo de configuración mediante el editor `nano`. Es importante realizarlo sin permisos de root para mantener la propiedad del usuario:
+### Paso 4.4: Configuración final del script
+Se sustituye el contenido íntegro por las instrucciones específicas para invocar el gestor de ventanas de XFCE4, garantizando una interfaz de usuario funcional.
+![Script Finalizado](04-personalizacion-arranque-xstartup/04-contenido-script-finalizado.png)
 
-`nano ~/.vnc/xstartup`
+### Paso 4.5: Asignación de permisos de ejecución
+**Paso Crítico:** Se utiliza el comando `chmod +x` para otorgar permisos de ejecución al script. Sin este paso, el servidor ignorará las configuraciones anteriores por falta de privilegios.
+![Permisos Script](04-personalizacion-arranque-xstartup/05-asignacion-permisos-ejecucion.png)
 
-![Lanzamiento Nano](./04-personalizacion-arranque/02-lanzamiento-nano.png)
-
-Al entrar, visualizamos el script genérico original. Procedemos a borrar todo su contenido para evitar conflictos con el escritorio ligero:
-
-![Contenido Original](./04-personalizacion-arranque/03-contenido-original-script.png)
-
-### 4.3. Configuración del Entorno XFCE4
-Insertamos las líneas de código optimizadas. La instrucción `startxfce4 &` es la que garantiza que la interfaz gráfica sea funcional en la conexión remota:
-
-![Script Finalizado](./04-personalizacion-arranque/04-script-finalizado.png)
-
-### 4.4. Activación de Permisos de Ejecución
-Como paso final, otorgamos privilegios de ejecución al script mediante su ruta absoluta. Este paso asegura que el motor de VNC pueda procesar las nuevas instrucciones al arrancar:
-
-`chmod +x /home/admin1/.vnc/xstartup`
-
-![Permisos Script](./04-personalizacion-arranque/05-permisos-script.png)
+### Paso 4.6: Reinicio y validación del servidor
+Se arranca de nuevo el display `:3`. La terminal confirma que el servidor ahora "lee" las aplicaciones especificadas en el archivo `xstartup` correctamente configurado.
+![Arranque Finalizado](04-personalizacion-arranque-xstartup/06-arranque-servidor-configuracion-finalizada.png)
 
 ---
 
