@@ -100,7 +100,7 @@ Antes de aplicar cambios técnicos, se cierran las sesiones activas del servidor
 
 ### Paso 4.2: Edición del script de arranque
 Se accede al archivo de configuración oculto mediante el editor de texto `nano`. Este archivo es el "cerebro" que indica a VNC qué aplicaciones debe ejecutar al conectar.
-![Apertura Nano](04-personalizacion-arranque-xstartup/02-apertura-archivo-configuracion.png)
+![Apertura Nano](04-personalizacion-arranque-xstartup/02-lanzamiento-nano.png)
 
 ### Paso 4.3: Contenido original del sistema
 Captura del código por defecto generado por TightVNC. Se identifica que la configuración estándar no es compatible con el entorno gráfico instalado, lo que provoca la visualización nula (pantalla gris).
@@ -108,11 +108,11 @@ Captura del código por defecto generado por TightVNC. Se identifica que la conf
 
 ### Paso 4.4: Configuración final del script
 Se sustituye el contenido íntegro por las instrucciones específicas para invocar el gestor de ventanas de XFCE4, garantizando una interfaz de usuario funcional.
-![Script Finalizado](04-personalizacion-arranque-xstartup/04-contenido-script-finalizado.png)
+![Script Finalizado](04-personalizacion-arranque-xstartup/04-script-finalizado.png)
 
 ### Paso 4.5: Asignación de permisos de ejecución
 **Paso Crítico:** Se utiliza el comando `chmod +x` para otorgar permisos de ejecución al script. Sin este paso, el servidor ignorará las configuraciones anteriores por falta de privilegios.
-![Permisos Script](04-personalizacion-arranque-xstartup/05-asignacion-permisos-ejecucion.png)
+![Permisos Script](04-personalizacion-arranque-xstartup/05-permisos-script.png)
 
 ### Paso 4.6: Reinicio y validación del servidor
 Se arranca de nuevo el display `:3`. La terminal confirma que el servidor ahora "lee" las aplicaciones especificadas en el archivo `xstartup` correctamente configurado.
