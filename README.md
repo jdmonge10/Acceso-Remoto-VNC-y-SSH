@@ -57,7 +57,7 @@ Una vez instalados los servicios, se procede a la creación de las credenciales 
 
 ---
 
-## 📂 Fase 02: Configuración Inicial Contraseña.png
+## 📂 Fase 02: Configuración Inicial Contraseña
 Con el entorno gráfico ligero ya configurado, el siguiente paso es la instalación del software de servidor. **TigerVNC** es el estándar elegido para este despliegue debido a su alta eficiencia en el manejo de recursos y compatibilidad con múltiples clientes.
 
 ### Paso 2.1: Configuración de la Contraseña
