@@ -10,7 +10,7 @@ Este manual documenta el proceso técnico integral para crear un entorno de admi
 * [📂 Fase 01: Preparación y Actualización del Servidor](#-fase-01-preparación-del-sistema-e-instalación-de-entorno-gráfico)
 * [📂 Fase 02: Configuración Inicial Contraseña](#-fase-02-configuración-inicial-contraseña)
 * [📂 Fase 03: Configuración del Arranque del Escritorio)](#-fase-03-configuración-del-arranque-del-escritorio)
-* [📂 Fase 04: Configuración del Entorno Gráfico(xstartup)](#-fase-04-configuración-del-entorno-gráfico-xstartup)
+* [📂 Fase 04: Creación del Túnel SSH](#-fase-04-creación-del-túnel-ssh)
 * [📂 Fase 05: Gestión de Seguridad y Firewall (UFW)](#-fase-06-gestión-de-seguridad-y-firewall-ufw)
 * [📂 Fase 06: Instalación del Cliente en Windows 10](#-fase-07-instalación-del-cliente-en-windows-10)
 * [📂 Fase 08: Verificación y Pruebas de Conectividad](#-fase-08-verificación-y-pruebas-de-conectividad)
@@ -107,7 +107,7 @@ Se inicia nuevamente el servidor VNC. El sistema confirma que el servicio está 
 
 ---
 
-# 📂 Fase 04: Creación de túnel SSH
+# 📂 Fase 04: Creación de Túnel SSH
 
 Para garantizar que la conexión sea segura y cifrada, se utiliza un túnel SSH. Esto permite encapsular el tráfico del escritorio remoto dentro de una conexión protegida, mapeando un puerto local de nuestra máquina Windows con el puerto del servidor.
 
