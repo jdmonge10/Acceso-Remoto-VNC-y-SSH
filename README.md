@@ -92,29 +92,34 @@ Al ejecutar el comando `vncserver` por primera vez, el sistema lanza un asistent
 ---
 
 ## 📂 Fase 04: Personalización del Arranque (Script xstartup)
-En esta etapa configuramos las instrucciones de inicio del servidor para cargar el escritorio ligero XFCE4.
+En esta etapa realizamos la parada técnica del servidor para modificar sus instrucciones de inicio y forzar la carga del entorno gráfico **XFCE4**.
 
-### 4.1. Edición y Limpieza del Script
-Accedemos al archivo de configuración desde la terminal:
+### 4.1. Parada del Servicio
+Antes de editar cualquier archivo de configuración, es obligatorio detener la instancia activa del servidor. En nuestro caso, el sistema estaba ejecutando el monitor `:3`:
+
+`vncserver -kill :3`
+
+![Parada del Servidor](./04-personalizacion-arranque/01-edicion-script.png) 
+*(Nota: Aquí usamos la captura donde se ve el proceso siendo eliminado)*
+
+### 4.2. Edición y Limpieza del Script
+Con el servidor detenido, accedemos al archivo de configuración mediante el editor `nano`. Es importante realizarlo sin permisos de root para mantener la propiedad del usuario:
+
 `nano ~/.vnc/xstartup`
 
 ![Lanzamiento Nano](./04-personalizacion-arranque/02-lanzamiento-nano.png)
 
-Al entrar, visualizamos el contenido genérico original, el cual procedemos a eliminar íntegramente:
+Al entrar, visualizamos el script genérico original. Procedemos a borrar todo su contenido para evitar conflictos con el escritorio ligero:
 
 ![Contenido Original](./04-personalizacion-arranque/03-contenido-original-script.png)
 
-### 4.2. Inyección de Configuración XFCE4
-Insertamos los comandos necesarios para la carga del entorno gráfico. El archivo debe quedar configurado de la siguiente manera:
-
-![Edición del Script](./04-personalizacion-arranque/01-edicion-script.png)
-
-Verificamos que no existan líneas residuales antes de guardar los cambios:
+### 4.3. Configuración del Entorno XFCE4
+Insertamos las líneas de código optimizadas. La instrucción `startxfce4 &` es la que garantiza que la interfaz gráfica sea funcional en la conexión remota:
 
 ![Script Finalizado](./04-personalizacion-arranque/04-script-finalizado.png)
 
-### 4.3. Asignación de Permisos de Ejecución
-Finalmente, otorgamos privilegios de ejecución al script mediante la ruta absoluta para asegurar que el motor de VNC pueda procesarlo correctamente:
+### 4.4. Activación de Permisos de Ejecución
+Como paso final, otorgamos privilegios de ejecución al script mediante su ruta absoluta. Este paso asegura que el motor de VNC pueda procesar las nuevas instrucciones al arrancar:
 
 `chmod +x /home/admin1/.vnc/xstartup`
 
