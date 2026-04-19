@@ -12,7 +12,7 @@ Este manual documenta el proceso técnico integral para crear un entorno de admi
 * [📂 Fase 03: Configuración del Arranque del Escritorio)](#-fase-03-configuración-del-arranque-del-escritorio)
 * [📂 Fase 04: Creación de Túnel SSH](#-fase-04-creación-de-túnel-ssh)
 * [📂 Fase 05: Implementación de RealVNC Viewer en Windows](#-fase-05-implementación-de-realvnc-viewer-en-windows)
-* [📂 Fase 06: Instalación del Cliente en Windows 10](#-fase-07-instalación-del-cliente-en-windows-10)
+* [📂 Fase 06: Conexión y Configuración Final Desde RealVNC](#-fase-06-conexión-y-configuración-final-desde-realvnc)
 * [📂 Fase 08: Verificación y Pruebas de Conectividad](#-fase-08-verificación-y-pruebas-de-conectividad)
 * [🏆 Conclusión Final](#-conclusión-final)
 * [🧠 Lecciones Aprendidas (Troubleshooting)](#-lecciones-aprendidas-troubleshooting)
@@ -163,7 +163,7 @@ El proceso concluye correctamente. El cliente RealVNC Viewer ya está disponible
 
 ---
 
-# 📂 Fase 06: Conexión y configuración final desde RealVNC
+# 📂 Fase 06: Conexión y Configuración Final Desde RealVNC
 
 En esta etapa final, utilizaremos el cliente instalado para conectar con el servidor a través del túnel seguro. Al haber establecido el túnel SSH, la conexión se realizará apuntando a nuestra propia máquina (`localhost`), que actúa como puente cifrado.
 
