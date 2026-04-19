@@ -203,7 +203,7 @@ El proyecto ha cumplido con éxito el objetivo de establecer una infraestructura
 * **Configuración de Pantalla (Xstartup):** La correcta definición del entorno gráfico en el archivo de configuración de VNC es vital para evitar el error de la "pantalla gris". Se debe asegurar que el gestor de ventanas (XFCE4) sea invocado correctamente.
 * **Seguridad por Capas:** Se ha aprendido que la seguridad no depende de un solo factor; la combinación de `vncpasswd` para el servicio y el cifrado RSA/ED25519 de SSH crea una conexión robusta contra ataques de interceptación (Man-in-the-Middle).
 
-## 🚀 Hoja de Ruta (Mejoras Futuras)
+## 🚀 Hoja de Ruta (Próximos Pasos)
 
 * **Automatización de Conexiones:** Crear un script `.bat` en Windows que levante el túnel SSH y ejecute RealVNC con un solo clic.
 * **Optimización de Ancho de Banda:** Experimentar con diferentes niveles de compresión en el túnel SSH (`-C`) para mejorar la fluidez en redes con mayor latencia.
