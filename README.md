@@ -9,7 +9,7 @@ Este manual documenta el proceso técnico integral para crear un entorno de admi
 * [🛠️ Especificaciones Técnicas](#️-especificaciones-técnicas)
 * [📂 Fase 01: Preparación y Actualización del Servidor](#-fase-01-preparación-del-sistema-e-instalación-de-entorno-gráfico)
 * [📂 Fase 02: Configuración Inicial Contraseña](#-fase-02-configuración-inicial-contraseña)
-* [📂 Fase 03: Configuración Inicial del Servidor VNC)](#-fase-03-configuración-inicial-del-servidor-vnc)
+* [📂 Fase 03: Configuración del Arranque del Escritorio)](#-fase-03-configuración-del-arranque-del-escritorio)
 * [📂 Fase 04: Configuración del Entorno Gráfico(xstartup)](#-fase-04-configuración-del-entorno-gráfico-xstartup)
 * [📂 Fase 05: Gestión de Seguridad y Firewall (UFW)](#-fase-06-gestión-de-seguridad-y-firewall-ufw)
 * [📂 Fase 06: Instalación del Cliente en Windows 10](#-fase-07-instalación-del-cliente-en-windows-10)
@@ -60,11 +60,11 @@ Una vez instalados los servicios, se procede a la creación de las credenciales 
 ## 📂 Fase 02: Configuracion Inicial Contraseña.png
 Con el entorno gráfico ligero ya configurado, el siguiente paso es la instalación del software de servidor. **TigerVNC** es el estándar elegido para este despliegue debido a su alta eficiencia en el manejo de recursos y compatibilidad con múltiples clientes.
 
-### Paso 2.1: Configuración de la contraseña
+### Paso 2.1: Configuración de la Contraseña
 Una vez instalados los servicios, se procede a la creación de las credenciales de acceso para el servidor gráfico mediante el comando `vncpasswd`.
 ![Configuracion Inicial](./02-configuracion-inicial-contraseña/02-configuracion-inicial-contraseña.png)
 
-### Paso 2.2: Detalles técnicos del despliegue
+### Paso 2.2: Detalles Técnicos del Despliegue
 - **Ejecución del comando:** Se utiliza `vncpasswd` para generar el archivo de claves cifradas en el directorio del usuario.
 - **Password / Verify:** Definición de la clave de acceso principal para el usuario `admin1`.
 - **View-only password:** Configuración de un acceso restringido (marcado como "y" en la captura) para supervisión sin capacidad de interacción.
@@ -72,54 +72,45 @@ Una vez instalados los servicios, se procede a la creación de las credenciales 
 
 ---
 
-## 📂 Fase 03: Configuración Inicial del Servidor VNC
-En esta etapa se valida la integridad de la instalación y se procede a la inicialización del servicio para generar el árbol de directorios de configuración y las credenciales de seguridad.
+# 📂 Fase 03: Configuración del Arranque del Escritorio
 
-### 3.1. Validación de la Versión del Servidor
-Antes de configurar el servicio, se confirma mediante el gestor de paquetes que la versión instalada es la correcta para garantizar la compatibilidad con el entorno Ubuntu 22.04:
+Para que el servidor VNC arranque el entorno ligero **XFCE4** en lugar de una terminal vacía, es necesario editar el script de inicio del usuario, otorgarle permisos de ejecución y reiniciar el servicio.
 
-`dpkg -s tightvncserver | grep Version`
+### Paso 3.1: Inicio del proceso de configuración
+Se prepara el entorno para la modificación de los archivos de arranque del servidor.
+`nano ~/.vnc/xstartup`
+![Inicio Configuración](01-configuracion-inicio-escritorio.png)
 
-![Versión VNC](./03-configuracion-inicial/01-version-vnc.png)
+### Paso 3.2: Finalización de la sesión previa
+Antes de editar el fichero, se debe matar la instancia activa para evitar conflictos con archivos de bloqueo (.lock) y asegurar una edición limpia:
+`vncserver -kill :1`
+![Finalización Sesión](02-finalizacion-sesion-vnc.png)
 
-### 3.2. Definición de Credenciales y Entorno de Usuario
-Al ejecutar el comando `vncserver` por primera vez, el sistema lanza un asistente de configuración esencial:
-1. **Creación de Password:** Se establece la clave de acceso para las conexiones remotas (almacenada en un hash dentro de `~/.vnc/passwd`).
-2. **Generación de Directorios:** El sistema crea la carpeta oculta `.vnc` donde residirán los scripts de arranque.
-3. **Asignación de Monitor:** En este despliegue, el servidor asignó automáticamente el monitor `:3`, habilitando el puerto 5903 para la escucha de peticiones.
+### Paso 3.3: Edición del fichero xstartup
+Se accede al archivo de configuración alojado en la carpeta oculta `.vnc` para definir los parámetros de arranque:
+`nano ~/.vnc/xstartup`
+![Edición Fichero](03-configuracion-fichero-inicio.png)
 
-`vncserver`
+### Paso 3.4: Configuración interna del script
+Se definen las variables de entorno y se especifica la ruta del ejecutable de XFCE para asegurar la carga de la interfaz gráfica. Se añaden líneas como `unset SESSION_MANAGER` y `startxfce4 &`.
+![Detalles Fichero](04-configuracion-fichero-inicio-detalles.png)
 
-![Configuración Password](./03-configuracion-inicial/02-password-vnc.png)
+### Paso 3.5: Asignación de permisos de ejecución
+Es fundamental transformar el script en un archivo ejecutable para que el servidor TigerVNC pueda procesar las instrucciones de inicio:
+`chmod +x ~/.vnc/xstartup`
+![Permisos Ejecución](05-permisos-ejecucion-xstartup.png)
 
----
+### Paso 3.6: Arranque y validación del servicio
+Se inicia nuevamente el servidor VNC. El sistema confirma que el servidor está corriendo en el puerto `5901` (Display `:1`), validando que la configuración ha sido exitosa:
+`vncserver :1`
+![Arranque Exitoso](06-inicio-servidor-vnc-exitoso.png)
 
-## 📂 Fase 04: Configuración del Entorno Gráfico (xstartup)
-Una vez instalado el servidor VNC, es imperativo configurar el script de inicio para evitar el error de "pantalla gris" y asegurar que se cargue correctamente el entorno de escritorio XFCE4.
 
-### Paso 4.1: Detención de sesiones previas
-Antes de aplicar cambios técnicos, se cierran las sesiones activas del servidor para trabajar sobre una base limpia y evitar conflictos de procesos.
-![Detención Proceso](04-personalizacion-arranque-xstartup/01-detencion-proceso-vnc-previo.png)
 
-### Paso 4.2: Edición del script de arranque
-Se accede al archivo de configuración oculto mediante el editor de texto `nano`. Este archivo es el "cerebro" que indica a VNC qué aplicaciones debe ejecutar al conectar.
-![Apertura Nano](04-personalizacion-arranque-xstartup/02-lanzamiento-nano.png)
 
-### Paso 4.3: Contenido original del sistema
-Captura del código por defecto generado por TightVNC. Se identifica que la configuración estándar no es compatible con el entorno gráfico instalado, lo que provoca la visualización nula (pantalla gris).
-![Contenido Original](04-personalizacion-arranque-xstartup/03-contenido-original-script.png)
 
-### Paso 4.4: Configuración final del script
-Se sustituye el contenido íntegro por las instrucciones específicas para invocar el gestor de ventanas de XFCE4, garantizando una interfaz de usuario funcional.
-![Script Finalizado](04-personalizacion-arranque-xstartup/04-script-finalizado.png)
 
-### Paso 4.5: Asignación de permisos de ejecución
-**Paso Crítico:** Se utiliza el comando `chmod +x` para otorgar permisos de ejecución al script. Sin este paso, el servidor ignorará las configuraciones anteriores por falta de privilegios.
-![Permisos Script](04-personalizacion-arranque-xstartup/05-permisos-script.png)
 
-### Paso 4.6: Reinicio y validación del servidor
-Se arranca de nuevo el display `:3`. La terminal confirma que el servidor ahora "lee" las aplicaciones especificadas en el archivo `xstartup` correctamente configurado.
-![Arranque Finalizado](04-personalizacion-arranque-xstartup/06-arranque-servidor-configuracion-finalizada.png)
 
 ---
 
