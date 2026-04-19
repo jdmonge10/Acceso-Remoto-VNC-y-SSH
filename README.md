@@ -58,14 +58,17 @@ Una vez instalados los servicios, se procede a la creación de las credenciales 
 ---
 
 ## 📂 Fase 02: Configuracion Inicial Contraseña.png
-Con el entorno gráfico ligero ya configurado, el siguiente paso es la instalación del software de servidor. **TightVNC** es el estándar elegido para este despliegue debido a su alta eficiencia en el manejo de recursos y compatibilidad con múltiples clientes.
+Con el entorno gráfico ligero ya configurado, el siguiente paso es la instalación del software de servidor. **TigerVNC** es el estándar elegido para este despliegue debido a su alta eficiencia en el manejo de recursos y compatibilidad con múltiples clientes.
 
-### 2.1. Despliegue del Binario
-Se utiliza el gestor de paquetes de Ubuntu para descargar e integrar los binarios necesarios del servidor VNC. Este paquete habilita al servidor para escuchar peticiones remotas en el puerto 5901 (por defecto):
+### Paso 2.1: Configuración de la contraseña
+Una vez instalados los servicios, se procede a la creación de las credenciales de acceso para el servidor gráfico mediante el comando `vncpasswd`.
+![Configuracion Inicial](02-Configuracion-Inicial-Contrasena.png)
 
-`sudo apt install tightvncserver -y`
-
-![Instalación VNC](./02-instalacion-tightvncserver/01-instalacion-vnc.png)
+### Paso 2.2: Detalles técnicos del despliegue
+- **Ejecución del comando:** Se utiliza `vncpasswd` para generar el archivo de claves cifradas en el directorio del usuario.
+- **Password / Verify:** Definición de la clave de acceso principal para el usuario `admin1`.
+- **View-only password:** Configuración de un acceso restringido (marcado como "y" en la captura) para supervisión sin capacidad de interacción.
+- **Directorio de sistema:** Generación automática de la carpeta oculta `~/.vnc` donde se alojará el archivo de configuración de la sesión.
 
 ---
 
