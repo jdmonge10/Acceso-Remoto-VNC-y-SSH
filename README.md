@@ -45,7 +45,7 @@ En esta etapa se garantiza que el servidor cuente con las últimas definiciones 
 
 ### 1.1. Actualización de Repositorios
 Se garantiza que el sistema disponga de las últimas firmas de seguridad y versiones de software:
-`sudo apt update && sudo apt upgrade -y`
+`sudo apt update -y`
 
 ![Update Sistema](./01-preparacion-instalacion/01-update-sistema.png)
 
