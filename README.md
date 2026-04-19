@@ -68,6 +68,26 @@ Se utiliza el gestor de paquetes de Ubuntu para descargar e integrar los binario
 
 ---
 
+## 📂 Fase 03: Configuración Inicial del Servidor VNC
+En esta etapa se valida la integridad de la instalación y se procede a la inicialización del servicio para generar el árbol de directorios de configuración y las credenciales de seguridad.
+
+### 3.1. Validación de la Versión del Servidor
+Antes de configurar el servicio, se confirma mediante el gestor de paquetes que la versión instalada es la correcta para garantizar la compatibilidad con el entorno Ubuntu 22.04:
+
+`dpkg -s tightvncserver | grep Version`
+
+![Versión VNC](./03-configuracion-inicial/01-version-vnc.png)
+
+### 3.2. Definición de Credenciales y Entorno de Usuario
+Al ejecutar el comando `vncserver` por primera vez, el sistema lanza un asistente de configuración esencial:
+1. **Creación de Password:** Se establece la clave de acceso para las conexiones remotas (almacenada en un hash dentro de `~/.vnc/passwd`).
+2. **Generación de Directorios:** El sistema crea la carpeta oculta `.vnc` donde residirán los scripts de arranque.
+3. **Asignación de Monitor:** En este despliegue, el servidor asignó automáticamente el monitor `:3`, habilitando el puerto 5903 para la escucha de peticiones.
+
+`vncserver`
+
+![Configuración Password](./03-configuracion-inicial/02-password-vnc.png)
+
 ## 🏆 Conclusión Final
 El proyecto ha demostrado la viabilidad de implementar un sistema de control remoto gráfico multiplataforma. Se ha logrado integrar con éxito un servidor Linux accesible desde clientes Windows, optimizando recursos mediante el uso de entornos ligeros y configuraciones de red locales.
 
