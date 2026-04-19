@@ -194,17 +194,18 @@ Finalmente, accedemos al escritorio completo. El servidor ya es totalmente admin
 ---
 
 ## 🏆 Conclusión Final
-El proyecto ha demostrado la viabilidad de implementar un sistema de control remoto gráfico multiplataforma. Se ha logrado integrar con éxito un servidor Linux accesible desde clientes Windows, optimizando recursos mediante el uso de entornos ligeros y configuraciones de red locales.
+
+El proyecto ha cumplido con éxito el objetivo de establecer una infraestructura de administración remota gráfica segura. Se ha logrado integrar un servidor Linux con un cliente Windows 10, no solo permitiendo el control visual del sistema, sino garantizando la integridad de los datos mediante técnicas de tunelización avanzada.
 
 ## 🧠 Lecciones Aprendidas (Troubleshooting)
-* **Configuración de Red:** El uso de modo NAT impide la conexión directa sin reenvío de puertos; el Adaptador Puente es crítico para visibilidad LAN directa.
-* **Pantalla Gris en VNC:** Error común si el archivo `xstartup` no tiene permisos de ejecución o no apunta al escritorio correcto.
-* **Firewall:** Es obligatorio abrir el puerto 5901 (o el correspondiente al display :1) para evitar bloqueos de conexión.
 
-## 🚀 Hoja de Ruta (Próximos Pasos)
-1. **Túnel SSH:** Implementar seguridad mediante SSH para cifrar el tráfico VNC, que por defecto viaja en plano.
-2. **Persistencia:** Configurar el servidor VNC como un servicio de `systemd` para que arranque automáticamente con el sistema.
+* **Gestión de Puertos y Túneles:** El uso de `localhost` en el cliente VNC es fundamental cuando se trabaja con túneles SSH. Un error común es intentar conectar a la IP del servidor directamente, lo que expondría el tráfico de forma no cifrada.
+* **Configuración de Pantalla (Xstartup):** La correcta definición del entorno gráfico en el archivo de configuración de VNC es vital para evitar el error de la "pantalla gris". Se debe asegurar que el gestor de ventanas (XFCE4) sea invocado correctamente.
+* **Seguridad por Capas:** Se ha aprendido que la seguridad no depende de un solo factor; la combinación de `vncpasswd` para el servicio y el cifrado RSA/ED25519 de SSH crea una conexión robusta contra ataques de interceptación (Man-in-the-Middle).
 
----
+## 🚀 Hoja de Ruta (Mejoras Futuras)
 
+* **Automatización de Conexiones:** Crear un script `.bat` en Windows que levante el túnel SSH y ejecute RealVNC con un solo clic.
+* **Optimización de Ancho de Banda:** Experimentar con diferentes niveles de compresión en el túnel SSH (`-C`) para mejorar la fluidez en redes con mayor latencia.
+* **Gestión de Sesiones:** Configurar el servidor VNC como un servicio de `systemd` para asegurar que el escritorio remoto esté disponible inmediatamente tras un reinicio del servidor.
 
