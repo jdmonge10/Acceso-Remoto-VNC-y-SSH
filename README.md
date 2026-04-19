@@ -163,6 +163,36 @@ El proceso concluye correctamente. El cliente RealVNC Viewer ya está disponible
 
 ---
 
+# 📂 Fase 06: Conexión y configuración final desde RealVNC
+
+En esta etapa final, utilizaremos el cliente instalado para conectar con el servidor a través del túnel seguro. Al haber establecido el túnel SSH, la conexión se realizará apuntando a nuestra propia máquina (`localhost`), que actúa como puente cifrado.
+
+### Paso 6.1: Inicio del cliente RealVNC
+Se ejecuta la aplicación **VNC Viewer** en Windows para comenzar con la configuración del perfil de acceso al servidor remoto.
+![Inicio Cliente](./06-conexion-configuracion-final-vnc/01-inicio-cliente-vnc.png)
+
+### Paso 6.2: Configuración de la dirección local
+En la barra de direcciones, introducimos `localhost:5900` (o el puerto configurado en el túnel). Esto redirige la petición de forma segura a través del túnel SSH previamente abierto.
+![Dirección Localhost](./06-conexion-configuracion-final-vnc/02-ip-localhost-vnc.png)
+
+### Paso 6.3: Ajustes avanzados (Modo Experto)
+Accedemos a las propiedades de la conexión, pestaña **Experto**, para configurar los parámetros `Encryption` en `PreferOff` y `WarnUnencrypted` en `False`. Esto es necesario ya que el cifrado lo gestiona el túnel SSH y no el protocolo VNC nativo.
+![Configuración Experto](./06-conexion-configuracion-final-vnc/03-configuracion-experto-vnc.png)
+
+### Paso 6.4: Autenticación del servicio
+Al conectar, el sistema solicita la contraseña de seguridad. Introducimos la clave que definimos previamente en el servidor mediante el comando `vncpasswd`.
+![Autenticación Contraseña](./06-conexion-configuracion-final-vnc/04-autenticacion-vnc-contrasena.png)
+
+### Paso 6.5: Acceso al escritorio remoto
+Tras validar las credenciales, se establece la conexión y se visualiza la pantalla de inicio del entorno gráfico del servidor Linux.
+![Acceso Remoto](./06-conexion-configuracion-final-vnc/05-acceso-escritorio-remoto-final.png)
+
+### Paso 6.6: Escritorio XFCE4 operativo
+Finalmente, accedemos al escritorio completo. El servidor ya es totalmente administrable de forma gráfica y segura desde nuestra máquina Windows 10.
+![Escritorio Desbloqueado](./06-conexion-configuracion-final-vnc/06-escritorio-xfce-desbloqueado.png)
+
+---
+
 ## 🏆 Conclusión Final
 El proyecto ha demostrado la viabilidad de implementar un sistema de control remoto gráfico multiplataforma. Se ha logrado integrar con éxito un servidor Linux accesible desde clientes Windows, optimizando recursos mediante el uso de entornos ligeros y configuraciones de red locales.
 
