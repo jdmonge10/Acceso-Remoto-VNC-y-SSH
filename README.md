@@ -23,7 +23,7 @@ Este manual documenta el proceso técnico integral para crear un entorno de admi
 ## 🛠️ Especificaciones Técnicas
 Para asegurar la replicabilidad de este laboratorio, se detallan los recursos de hardware virtual y software utilizados:
 
-### 3.1: Nodo Servidor (Ubuntu 22.04)
+### Nodo Servidor (Ubuntu 22.04)
 * **Sistema Operativo:** Ubuntu 22.04 LTS (Jammy Jellyfish).
 * **Entorno Gráfico:** XFCE4 (Optimizado para VNC).
 * **Recursos VM:** 4GB RAM | 2 vCPUs | 50GB VDI.
@@ -31,7 +31,7 @@ Para asegurar la replicabilidad de este laboratorio, se detallan los recursos de
 
 ![Especificaciones Ubuntu](./00-especificaciones/01-especificaciones-ubuntu.png)
 
-### 3.2: Nodo Cliente (Windows 10)
+### Nodo Cliente (Windows 10)
 * **Sistema Operativo:** Windows 10 Pro.
 * **Recursos VM:** 8GB RAM | 2 vCPUs | 50GB VDI.
 * **Software:** TightVNC Viewer.
@@ -72,39 +72,38 @@ Una vez instalados los servicios, se procede a la creación de las credenciales 
 
 ---
 
-# 📂 Fase 03: Configuración del Arranque del Escritorio
+# 📂 Fase 03: Configuración del arranque del escritorio
 
-Para que el servidor VNC arranque el entorno ligero **XFCE4** en lugar de una terminal vacía, es necesario editar el script de inicio del usuario, otorgarle permisos de ejecución y reiniciar el servicio.
+Para que el servidor VNC arranque el entorno ligero **XFCE4** en lugar de una terminal vacía, es necesario editar el script de inicio del usuario, otorgarle permisos de ejecución y reiniciar el servicio para aplicar los cambios.
 
 ### Paso 3.1: Inicio del proceso de configuración
 Se prepara el entorno para la modificación de los archivos de arranque del servidor.
 `nano ~/.vnc/xstartup`
-![Inicio Configuración](./configuracion-arranque-escritorio/01-configuracion-inicio-escritorio.png)
+![Inicio Configuración](./03-configuracion-arranque-escritorio/01-configuracion-inicio-escritorio.png)
 
 ### Paso 3.2: Finalización de la sesión previa
-Antes de editar el fichero, se debe matar la instancia activa para evitar conflictos con archivos de bloqueo (.lock) y asegurar una edición limpia:
+Antes de editar el fichero de configuración, se debe matar cualquier instancia activa del servidor para evitar conflictos con archivos de bloqueo y asegurar una edición limpia.
 `vncserver -kill :1`
-![Finalización Sesión](02-finalizacion-sesion-vnc.png)
+![Finalización Sesión](./03-configuracion-arranque-escritorio/02-finalizacion-sesion-vnc.png)
 
 ### Paso 3.3: Edición del fichero xstartup
-Se accede al archivo de configuración alojado en la carpeta oculta `.vnc` para definir los parámetros de arranque:
+Se accede al archivo de configuración `xstartup` alojado en la carpeta oculta `.vnc` utilizando el editor de texto.
 `nano ~/.vnc/xstartup`
-![Edición Fichero](03-configuracion-fichero-inicio.png)
+![Edición Fichero](./03-configuracion-arranque-escritorio/03-configuracion-fichero-inicio.png)
 
 ### Paso 3.4: Configuración interna del script
-Se definen las variables de entorno y se especifica la ruta del ejecutable de XFCE para asegurar la carga de la interfaz gráfica. Se añaden líneas como `unset SESSION_MANAGER` y `startxfce4 &`.
-![Detalles Fichero](04-configuracion-fichero-inicio-detalles.png)
+Se definen las variables de entorno necesarias y se especifica la ruta del ejecutable de XFCE4 para garantizar que la interfaz gráfica cargue correctamente al conectar.
+![Detalles Fichero](./03-configuracion-arranque-escritorio/04-configuracion-fichero-inicio-detalles.png)
 
 ### Paso 3.5: Asignación de permisos de ejecución
-Es fundamental transformar el script en un archivo ejecutable para que el servidor TigerVNC pueda procesar las instrucciones de inicio:
+Es un paso crítico transformar el script en un archivo ejecutable mediante el comando `chmod +x` para que el servidor pueda procesar las instrucciones de inicio.
 `chmod +x ~/.vnc/xstartup`
-![Permisos Ejecución](05-permisos-ejecucion-xstartup.png)
+![Permisos Ejecución](./03-configuracion-arranque-escritorio/05-permisos-ejecucion-xstartup.png)
 
 ### Paso 3.6: Arranque y validación del servicio
-Se inicia nuevamente el servidor VNC. El sistema confirma que el servidor está corriendo en el puerto `5901` (Display `:1`), validando que la configuración ha sido exitosa:
+Se inicia nuevamente el servidor VNC. El sistema confirma que el servicio está corriendo en el puerto `5901` (Display `:1`), validando que la nueva configuración es operativa.
 `vncserver :1`
-![Arranque Exitoso](06-inicio-servidor-vnc-exitoso.png)
-
+![Arranque Exitoso](./03-configuracion-arranque-escritorio/06-inicio-servidor-vnc-exitoso.png)
 
 
 
