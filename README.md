@@ -49,9 +49,9 @@ Se garantiza que el sistema disponga de las últimas firmas de seguridad y versi
 
 ![Update Sistema](./01-preparacion-instalacion/01-update-sistema.png)
 
-### 1.2. Instalación del Entorno XFCE4
-Para maximizar el rendimiento del acceso remoto, se instala el escritorio ligero **XFCE4** y sus complementos, evitando la carga excesiva que supone el entorno GNOME por defecto:
-`sudo apt install xfce4 xfce4-goodies -y`
+### 1.2. Instalación del Entorno XFCE4 y Servicios de Acceso Remoto
+Para maximizar el rendimiento del acceso remoto y garantizar la gestión del nodo, se instala el escritorio ligero **XFCE4**, el servidor TigerVNC y el servicio SSH. Esto evita la carga excesiva de GNOME y permite la administración remota segura: 
+`sudo apt install xfce4 xfce4-goodies tigervnc-standalone-server openssh-server -y`
 
 ![Instalación Escritorio](./01-preparacion-instalacion/02-instalacion-escritorio.png)
 
