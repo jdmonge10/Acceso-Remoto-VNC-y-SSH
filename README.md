@@ -127,7 +127,7 @@ El primer paso es abrir el **Símbolo del sistema (CMD)** o PowerShell en Window
 ![Búsqueda Terminal](./04-creacion-tunel-ssh/01-busqueda-terminal-windows.png)
 
 ### Paso 4.2: Ejecución del túnel SSH y validación
-Se ejecuta el comando para crear el túnel cifrado. En este caso, mapeamos el puerto local `59000` del cliente hacia el puerto `5901` del servidor. 
+Se ejecuta el comando para crear el túnel cifrado. En este caso, mapeamos el puerto local `5900` del cliente hacia el puerto `5901` del servidor. 
 
 `ssh -L 5900:localhost:5901 -C -N -l admin1 192.168.1.XXX`
 
