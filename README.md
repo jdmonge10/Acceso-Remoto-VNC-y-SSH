@@ -50,8 +50,11 @@ Se garantiza que el sistema disponga de las últimas firmas de seguridad y versi
 ![Update Sistema](./01-preparacion-instalacion/01-update-sistema.png)
 
 ### 1.2. Instalación del Entorno XFCE4 y Servicios de Acceso Remoto
-Una vez instalados los servicios, se procede a la creación de las credenciales de acceso para el servidor gráfico. Mediante el comando vncpasswd se establece una contraseña de control total y, opcionalmente, una de solo lectura (view-only), garantizando que solo los usuarios autorizados puedan gestionar el escritorio remoto:
-`vncpasswd`
+Se ejecuta la instalación del entorno ligero XFCE4, el servidor TigerVNC y OpenSSH mediante el siguiente comando:
+
+`sudo apt install xfce4 xfce4-goodies tigervnc-standalone-server openssh-server -y`
+
+Durante este proceso, el sistema configura las dependencias de la interfaz gráfica y genera automáticamente las llaves de host para habilitar las conexiones remotas seguras.
 
 ![Instalación Escritorio](./01-preparacion-instalacion/02-instalacion-escritorio.png)
 
