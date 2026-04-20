@@ -134,7 +134,7 @@ Se ejecuta el comando para crear el túnel cifrado. En este caso, mapeamos el pu
 ![Ejecución Túnel SSH](./04-creacion-tunel-ssh/02-ejecucion-tunel-ssh-contrasena.png)
 
 **Detalles técnicos del comando:**
-- `-L 5900:localhost:5901`: Redirige el tráfico del puerto local 59000 al 5901 remoto.
+- `-L 5900:localhost:5901`: Redirige el tráfico del puerto local 5900 al 5901 remoto.
 - `-C`: Activa la compresión de datos para mejorar la fluidez de la imagen.
 - `-N`: Indica que solo se requiere el túnel (no se abrirá una consola remota interactiva).
 - `-l admin1`: Especifica el usuario de acceso en el servidor.
