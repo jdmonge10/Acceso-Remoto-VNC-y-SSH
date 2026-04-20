@@ -80,8 +80,8 @@ Una vez instalados los servicios, se procede a la creación de las credenciales 
 Para que el servidor VNC arranque el entorno ligero **XFCE4** en lugar de una terminal vacía, es necesario editar el script de inicio del usuario, otorgarle permisos de ejecución y reiniciar el servicio para aplicar los cambios.
 
 ### Paso 3.1: Inicio del proceso de configuración
-Se prepara el entorno para la modificación de los archivos de arranque del servidor.
-`nano ~/.vnc/xstartup`
+Se realiza la primera ejecución del servidor VNC para generar los archivos de configuración iniciales en el directorio local del usuario. Al ejecutar el comando vncserver, se crea el entorno necesario y se asigna el puerto de comunicación (por defecto :1) para la sesión remota.
+`vncserver :1`
 ![Inicio Configuración](./03-configuracion-arranque-escritorio/01-configuracion-inicio-escritorio.png)
 
 ### Paso 3.2: Finalización de la sesión previa
