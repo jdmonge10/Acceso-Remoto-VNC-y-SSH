@@ -99,17 +99,12 @@ Se definen las variables de entorno necesarias y se especifica la ruta del ejecu
 ![Detalles Fichero](./03-configuracion-arranque-escritorio/04-configuracion-fichero-inicio-detalles.png)
 
 ### Desglose de variables y comandos:
-- ** #!/bin/sh:** Indica que el script debe ejecutarse usando el intérprete de comandos shell.
-
-- ** unset SESSION_MANAGER:** Desactiva el gestor de sesiones actual para evitar conflictos entre la sesión local del servidor y la sesión remota de VNC.
-
-unset DBUS_SESSION_BUS_ADDRESS: Limpia la dirección del bus de mensajes del sistema, asegurando que la nueva sesión gráfica no intente heredar permisos de la sesión de consola.
-
-/usr/bin/startxfce4: Es el comando principal que arranca el entorno de escritorio XFCE4.
-
-xrdb $HOME/.Xresources: Carga configuraciones de apariencia (como el tamaño de los cursores o colores del terminal) desde el archivo de recursos del usuario.
-
-x-window-manager &: Inicia el gestor de ventanas en segundo plano, permitiendo que la interfaz sea funcional y se puedan mover las ventanas.
+- **#!/bin/sh:** Indica que el script debe ejecutarse usando el intérprete de comandos shell.
+- **unset SESSION_MANAGER:** Desactiva el gestor de sesiones actual para evitar conflictos entre la sesión local del servidor y la sesión remota de VNC.
+- **unset DBUS_SESSION_BUS_ADDRESS:** Limpia la dirección del bus de mensajes del sistema, asegurando que la nueva sesión gráfica no intente heredar permisos de la sesión de consola.
+- **/usr/bin/startxfce4:** Es el comando principal que arranca el entorno de escritorio XFCE4.
+- **xrdb $HOME/.Xresources:** Carga configuraciones de apariencia (como el tamaño de los cursores o colores del terminal) desde el archivo de recursos del usuario.
+- **x-window-manager &:** Inicia el gestor de ventanas en segundo plano, permitiendo que la interfaz sea funcional y se puedan mover las ventanas.
 
 ### Paso 3.5: Asignación de permisos de ejecución
 Es un paso crítico transformar el script en un archivo ejecutable mediante el comando `chmod +x` para que el servidor pueda procesar las instrucciones de inicio.
