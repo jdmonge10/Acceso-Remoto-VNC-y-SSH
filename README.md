@@ -99,9 +99,9 @@ Se definen las variables de entorno necesarias y se especifica la ruta del ejecu
 ![Detalles Fichero](./03-configuracion-arranque-escritorio/04-configuracion-fichero-inicio-detalles.png)
 
 ### Desglose de variables y comandos:
-#!/bin/sh: Indica que el script debe ejecutarse usando el intérprete de comandos shell.
+- ** #!/bin/sh:** Indica que el script debe ejecutarse usando el intérprete de comandos shell.
 
-unset SESSION_MANAGER: Desactiva el gestor de sesiones actual para evitar conflictos entre la sesión local del servidor y la sesión remota de VNC.
+- ** unset SESSION_MANAGER:** Desactiva el gestor de sesiones actual para evitar conflictos entre la sesión local del servidor y la sesión remota de VNC.
 
 unset DBUS_SESSION_BUS_ADDRESS: Limpia la dirección del bus de mensajes del sistema, asegurando que la nueva sesión gráfica no intente heredar permisos de la sesión de consola.
 
